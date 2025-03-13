@@ -46,8 +46,11 @@ def google_callback(request: Request) -> Response:
         return Response({"error": "Failed to retrieve access token"}, status=status.HTTP_400_BAD_REQUEST)
 
     access_token = token_data["access_token"]
+    scope = token_data["scope"]
 
-    # Fetch user info
-    user_info = requests.get(GOOGLE_USER_INFO_URL, headers={"Authorization": f"Bearer {access_token}"}).json()
-
-    return Response({"user_info": user_info, "access_token": access_token}, status=status.HTTP_200_OK)
+    if "openid" in scope:
+        # Fetch user info
+        user_info = requests.get(GOOGLE_USER_INFO_URL, headers={"Authorization": f"Bearer {access_token}"}).json()
+        return Response({"user_info": user_info}, status=status.HTTP_200_OK)
+    else:
+        return Response({"access_token": access_token}, status=status.HTTP_200_OK)

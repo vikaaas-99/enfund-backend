@@ -1,0 +1,252 @@
+{
+	"info": {
+		"_postman_id": "03bfeb15-3b7d-4334-a003-05fb68b06b37",
+		"name": "enfund_backend",
+		"description": "This documentation explains how to use the **Postman Collection** for testing the APIs in **Enfund Backend Project**.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33093951"
+	},
+	"item": [
+		{
+			"name": "Google OAuth - login",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://enfund-backend-2qer.onrender.com/auth/login/",
+					"protocol": "https",
+					"host": [
+						"enfund-backend-2qer",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"auth",
+						"login",
+						""
+					]
+				},
+				"description": "**Method:** `GET`\n\n**URL:** `/auth/login/`\n\n**Description:** Returns a URL where users can log in with Google.\n\n**Response Example:**\n\n``` json\n{\n    \"auth_url\": \"https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=980821425821-chr02gpoa9ggmsc37m8gqujgtru3thdt.apps.googleusercontent.com&redirect_uri=https://enfund-backend-2qer.onrender.com/auth/callback/&scope=openid email profile&access_type=offline&prompt=consent\"\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Google OAuth - callback",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://enfund-backend-2qer.onrender.com/auth/callback/?code=4%2F0AQSTgQGzwPqnTHA82notM3LojFNRDIn",
+					"protocol": "https",
+					"host": [
+						"enfund-backend-2qer",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"auth",
+						"callback",
+						""
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "4%2F0AQSTgQGzwPqnTHA82notM3LojFNRDIn"
+						}
+					]
+				},
+				"description": "**Method:** `GET`\n\n**URL:** `/auth/callback/?code=YOUR_AUTH_CODE`\n\n**Description:** Handles the Google login callback.\n\n**Response Example:**\n\n``` json\n{\n    \"user_info\": {\n        \"id\": \"107676364776730\",\n        \"name\": \"Vikas Sharma\",\n        \"picture\": \"https://lh3.googleusercontent.com/a-/ALV-UQt0UfBGfdEmgeB3wCEbCSah92i6848mbL=s96-c\"\n    }\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Google Drive - connect",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/drive/connect/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"drive",
+						"connect",
+						""
+					]
+				},
+				"description": "**Method:** `GET`\n\n**URL:** `/drive/connect/`\n\n**Response Example:**\n\n``` json\n{\n    \"auth_url\": \"https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=980821425821-chr02gpoa9ggmsc37m8gqujgtru3thdt.apps.googleusercontent.com&redirect_uri=http://127.0.0.1:8000/auth/callback/&scope=https://www.googleapis.com/auth/drive.file&access_type=offline&prompt=consent\"\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Google Drive - callback",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/drive/connect/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"drive",
+						"connect",
+						""
+					]
+				},
+				"description": "**Method:** `GET`\n\n**URL:** `/auth/callback/?code=YOUR_AUTH_CODE`\n\n**Response Example:**\n\n``` json\n{\n    \"access_token\": \"ya29.a0AmvM6lP389v3-tj1ECGz_vtwid4QE1oG49d8BsXm2hYRE0yrt1V6Qxixhb4v1-YZEgjSMn0qQVEXrhLAxnDUvAdH1zQepGpUQ9nwY3FmTuLKW2OA58F1KbqAoo-aCgYKAWIFK0yqcHECiAvWthVg0175\"\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Google Drive - upload file",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/vikaas/Downloads/backend-assignment.pdf"
+						},
+						{
+							"key": "access_token",
+							"value": "ya29.a0AeXRPp5TnMrn3zCABUnzJt5rq7sE3hGuj1_NHzs15T-msxmvM6lP389v3-tj1ECGz_vtwid4QE1oG49d8BsXm2hYRE0yrt1V6Qxixhb4v1-YZEgjSMn0qQVEXrhLAxnDUvAdH1zQepGpUQ9nwY3FmTuLKW2OA58F1KbqAoo-aCgYKAWISARMSFQHGX2MiTX1KvFK0yqcHECiAvWthVg0175",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/drive/upload/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"drive",
+						"upload",
+						""
+					]
+				},
+				"description": "**Method:** `POST`\n\n**URL:** `/drive/upload/`\n\n**Body (Form-Data):**\n\n• access_token → **Your Access Token**\n\n• file → **Choose a file**\n\nResponse Example:\n\n``` json\n{\n    \"kind\": \"drive#file\",\n    \"id\": \"12hD0II6FxNxghDt-OlbL4Cg30Iw_\",\n    \"name\": \"backend-assignment.pdf\",\n    \"mimeType\": \"application/pdf\"\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Google Drive - files list",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"access_token\": \"ya29.a0AeXRPp5w5sFtv1EqN9pBnEePMrewwM5XXyvthn8b-W1vSQnnY4_0IRXpXKG0fzy47mz9onFMSIpbpVh09ZDG3mdIn8mQtZ0MY1mEK6AkThE4ZF2uKMc4Y6ehSnhh4eAhCtXoKksBXF38oq6G3zvZaVlxu2NS0DJ7v26p3i3TaCgYKAQcSARESFQHGX2MieOA0LhPAU51F2Gbue1YKHw0175\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/drive/files/?access_token=ya29.a0AeXRPp5TnMrn3zCABUnzJt5rq7sE3hGuj1_NHzs15T-msxmvM6lP389v3-tj1ECGz_vtwid4QE1oG49d8BsXm2hYRE0yrt1V6Qxixhb4v1-YZEgjSMn0qQVEXrhLAxnDUvAdH1zQepGpUQ9nwY3FmTuLKW2OA58F1KbqAoo-aCgYKAWISARMSFQHGX2MiTX1KvFK0yqcHECiAvWthVg0175",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"drive",
+						"files",
+						""
+					],
+					"query": [
+						{
+							"key": "access_token",
+							"value": "ya29.a0AeXRPp5TnMrn3zCABUnzJt5rq7sE3hGuj1_NHzs15T-msxmvM6lP389v3-tj1ECGz_vtwid4QE1oG49d8BsXm2hYRE0yrt1V6Qxixhb4v1-YZEgjSMn0qQVEXrhLAxnDUvAdH1zQepGpUQ9nwY3FmTuLKW2OA58F1KbqAoo-aCgYKAWISARMSFQHGX2MiTX1KvFK0yqcHECiAvWthVg0175"
+						}
+					]
+				},
+				"description": "**Method:** `GET`\n\n**URL:** `/drive/files/?access_token=YOUR_ACCESS_TOKEN`\n\n**Response Example:**\n\n``` json\n{\n    \"kind\": \"drive#fileList\",\n    \"incompleteSearch\": false,\n    \"files\": [\n        {\n            \"kind\": \"drive#file\",\n            \"mimeType\": \"application/pdf\",\n            \"id\": \"12hD0II6FxNxght-OlbL4Cg30Iw_\",\n            \"name\": \"backend-assignment.pdf\"\n        }\n    ]\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Google Drive - download file",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/drive/download/12hD0II6FxNxghDyOTet-OlbL4Cg30Iw_/?access_token=ya29.a0AeXRPp5TnMrn3zCABUnzJt5rq7sE3hGuj1_NHzs15T-msxmvM6lP389v3-tj1ECGz_vtwid4QE1oG49d8BsXm2hYRE0yrt1V6Qxixhb4v1-YZEgjSMn0qQVEXrhLAxnDUvAdH1zQepGpUQ9nwY3FmTuLKW2OA58F1KbqAoo-aCgYKAWISARMSFQHGX2MiTX1KvFK0yqcHECiAvWthVg0175",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"drive",
+						"download",
+						"12hD0II6FxNxghDyOTet-OlbL4Cg30Iw_",
+						""
+					],
+					"query": [
+						{
+							"key": "access_token",
+							"value": "ya29.a0AeXRPp5TnMrn3zCABUnzJt5rq7sE3hGuj1_NHzs15T-msxmvM6lP389v3-tj1ECGz_vtwid4QE1oG49d8BsXm2hYRE0yrt1V6Qxixhb4v1-YZEgjSMn0qQVEXrhLAxnDUvAdH1zQepGpUQ9nwY3FmTuLKW2OA58F1KbqAoo-aCgYKAWISARMSFQHGX2MiTX1KvFK0yqcHECiAvWthVg0175"
+						}
+					]
+				},
+				"description": "**Method:** `GET`\n\n**URL:** `/drive/download//?access_token=YOUR_ACCESS_TOKEN`\n\n**Response Example:**\n\n``` json\n{\n    \"message\": \"File downloaded successfully\",\n    \"path\": \"/Users/vikaas/codebases/enfund_assignment/enfund_backend/media/backend-assignment.pdf\"\n}\n\n ```"
+			},
+			"response": []
+		}
+	]
+}
