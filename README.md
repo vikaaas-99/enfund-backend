@@ -37,7 +37,7 @@ daphne -b 0.0.0.0 -p 8000 enfund_backend.asgi:application
 
 ## **Postman Collection**
 
-[Authentication and Drive APIs](https://pages.github.com/)
+[Authentication and Drive APIs](https://github.com/vikaaas-99/enfund-backend/blob/main/enfund_backend.postman_collection.json)
 
 ### **WebSockets (Real-Time Chat) - Testing in Postman**
 
