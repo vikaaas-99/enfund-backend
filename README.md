@@ -26,11 +26,11 @@ daphne -b 0.0.0.0 -p 8000 enfund_backend.asgi:application
 
 ## **API Documentation**
 
-| Method |	Endpoint |	Description |
+| **Method** |	**Endpoint** |	**Description** |
 | ------ | ---------| ---------|
-| GET |	/auth/login/ |	Get Google Auth URL |
-| POST |	/drive/connect/ |	Connect Google Drive
-POST	/drive/upload/	Upload file to Drive
-GET	/drive/files/	List Google Drive files
-GET	/drive/download/<file_id>/	Download file
-WS	ws://your-app.onrender.com/ws/chat/	WebSocket for chat
+| **GET** |	`/auth/login/` |	Get Google Auth URL |
+| **POST** |	`/drive/connect/` |	Connect Google Drive |
+| **POST** |	`/drive/upload/` |	Upload file to Drive |
+| **GET** |	`/drive/files/` |	List Google Drive files |
+| **GET** |	`/drive/download/<file_id>/` |	Download file |
+| **WS** |	`ws://enfund-backend-2qer.onrender.com/ws/chat/` |	WebSocket for chat |
