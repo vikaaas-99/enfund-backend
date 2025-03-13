@@ -53,7 +53,7 @@ Postman does not allow WebSockets in collections, so follow these steps to test 
 - Click **Connect**.
 
 #### 4️⃣ Send a Chat Message
-- Click **+ New Message**.
+- Click **+ New Message**
 - Send the following JSON:
 ```json
 {
